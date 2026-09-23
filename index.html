@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>india-v2-bot</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --ink: #16181d;
+    --muted: #5a6270;
+    --rule: #d8dbe2;
+    --ground: #fbfbfa;
+    --panel: #f2f2ef;
+    --link: #1a4fa0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e6e8ec;
+      --muted: #9aa2b1;
+      --rule: #2e333c;
+      --ground: #14161a;
+      --panel: #1c1f25;
+      --link: #8ab4f8;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif;
+  }
+  main { max-width: 40rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+  h1 {
+    font: 600 1.5rem/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    margin: 0 0 .25rem;
+    letter-spacing: -.01em;
+  }
+  .sub { color: var(--muted); margin: 0 0 2.5rem; font-size: .95rem; }
+  h2 {
+    font: 600 .8rem/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--muted);
+    margin: 2.5rem 0 .6rem;
+    padding-bottom: .4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+  li { margin-bottom: .5rem; }
+  code, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .88em;
+  }
+  pre {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: .8rem 1rem;
+    overflow-x: auto;
+    line-height: 1.5;
+  }
+  code:not(pre code) {
+    background: var(--panel);
+    border-radius: 3px;
+    padding: .1em .35em;
+  }
+  a { color: var(--link); }
+  .stop {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--muted);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    margin: 0 0 1rem;
+  }
+  .stop p:last-child { margin-bottom: 0; }
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: .85rem;
+  }
+</style>
+</head>
+<body>
+<main>
+
+<h1>india-v2-bot</h1>
+<p class="sub">An automated client that requests published documents from Indian financial market
+publishers. If it has reached your site, this page is what it is.</p>
+
+<h2>What it sends</h2>
+<pre>india-v2-bot/1.0 (+https://raketaai.github.io/india-v2-bot/)</pre>
+<p>That is the identity it sends everywhere but at two publishers, and everywhere else it never
+asserts a <code>Referer</code> header.</p>
+
+<p><strong>The two exceptions are the National Stock Exchange of India and BSE.</strong> Both refuse
+any client that does not present as a web browser: measured on 23 September 2026, BSE refused this
+name on every request and NSE left every connection unanswered. To those two alone the program sends
+the headers of a Chrome browser, and to BSE the <code>Referer</code> of BSE's own site. It asks them
+only for filings the Listing Regulations make public, it honours their <code>robots.txt</code>, and
+every such request is recorded against this exception. If either exchange would rather admit the
+program under its own name, write to the address below and it will switch.</p>
+
+<h2>What it is</h2>
+<p>It collects published documents — issuers' financial results, annual reports and regulatory
+disclosures, and the lists of filings that index them — from exchanges, regulators and issuers in
+India. They feed a private research platform on the issuers of the rupee bond market. Nothing
+collected is redistributed, resold, licensed or served to anyone.</p>
+
+<p><strong>It is automated, and its code is written by AI coding agents</strong> (Anthropic's
+Claude), under the operator's direction and review. That is disclosed here rather than compressed
+into a token, and it is not a claim to act for Anthropic: this program is not one of their
+crawlers and does not send their crawler names.</p>
+
+<h2>Who operates it</h2>
+<p><strong>Andrey Fomin</strong>, an individual, on his own account. He acts for no company,
+client or other principal, and no third party is a party to this. Requests leave from two hosts he
+operates: one in Mumbai, India — currently <code>65.20.72.152</code> — and one in Germany —
+currently <code>178.104.188.64</code>. The second asks again only for what the first could not
+obtain.</p>
+
+<h2>How it behaves</h2>
+<ul>
+  <li><strong>It honours your <code>robots.txt</code></strong>, including where doing so costs it
+  documents it wants.</li>
+  <li><strong>It asks for specific things</strong>: an issuer's list of filings, and the documents
+  that list names. It does not follow links to see what a site holds.</li>
+  <li><strong>It is slow on purpose</strong>: at most one request every two seconds to any host.</li>
+  <li><strong>It never creates an account, registers, accepts terms, asserts a membership, or pays
+  for anything</strong> — in anyone's name, including the operator's. A source behind a login or a
+  membership is recorded as not asked, and left so.</li>
+  <li><strong>It does not disguise itself, except as stated above.</strong> Anywhere else, if you
+  refuse this name, it is refused: the refusal is written down and the source is done without,
+  rather than worked around.</li>
+</ul>
+
+<h2>How to make it stop</h2>
+<div class="stop">
+  <p><strong>Refuse it in your <code>robots.txt</code></strong> and it will stop. It reads the file
+  and obeys it:</p>
+  <pre>User-agent: india-v2-bot
+Disallow: /</pre>
+  <p><strong>Or say so directly</strong> — write to <a
+  href="mailto:contact@raketa.ai?subject=india-v2-bot">contact@raketa.ai</a>, or <a
+  href="https://github.com/RaketaAi/india-v2-bot/issues/new">open an issue here</a>. Name the
+  host and, if you have it, a log line. It will be stopped, and no reason is needed.</p>
+</div>
+
+<h2>This page's own history</h2>
+<p>This page is served from a public git repository, so what it said on any given day — and what
+this program therefore claimed to be at the time it made a request — is readable at <a
+href="https://github.com/RaketaAi/india-v2-bot">github.com/RaketaAi/india-v2-bot</a>
+rather than being whatever it says today.</p>
+
+<footer>Last updated 23 September 2026.</footer>
+
+</main>
+</body>
+</html>
