@@ -101,15 +101,16 @@ asserts a <code>Referer</code> header.</p>
 <p><strong>The two exceptions are the National Stock Exchange of India and BSE.</strong> Both refuse
 any client that does not present as a web browser: measured on 23 September 2026, BSE refused this
 name on every request and NSE left every connection unanswered. To those two alone the program sends
-the headers of a Chrome browser, and to BSE the <code>Referer</code> of BSE's own site. It asks them
+the headers of a Chrome browser, with the <code>Referer</code> of the exchange's own site, and to
+BSE also the <code>Origin</code> of BSE's own site. Nothing else is added. It asks them
 only for filings the Listing Regulations make public, it honours their <code>robots.txt</code>, and
 every such request is recorded against this exception. If either exchange would rather admit the
 program under its own name, write to the address below and it will switch.</p>
 
 <h2>What it is</h2>
 <p>It collects published documents — issuers' financial results, annual reports and regulatory
-disclosures, and the lists of filings that index them — from exchanges, regulators and issuers in
-India. They feed a private research platform on the issuers of the rupee bond market. Nothing
+disclosures, credit rating agencies' rating rationales, and the lists of filings and ratings that
+index them — from exchanges, regulators, credit rating agencies and issuers in India. They feed a private research platform on the issuers of the rupee bond market. Nothing
 collected is redistributed, resold, licensed or served to anyone.</p>
 
 <p><strong>It is automated, and its code is written by AI coding agents</strong> (Anthropic's
@@ -119,7 +120,8 @@ crawlers and does not send their crawler names.</p>
 
 <h2>Who operates it</h2>
 <p><strong>Andrey Fomin</strong>, an individual, on his own account. He acts for no company,
-client or other principal, and no third party is a party to this. Requests leave from two hosts he
+client or other principal, and no third party is a party to this. The domain <code>raketa.ai</code>
+and the GitHub account <code>RaketaAi</code> are his own. Requests leave from two hosts he
 operates: one in Mumbai, India — currently <code>65.20.72.152</code> — and one in Germany —
 currently <code>178.104.188.64</code>. The second asks again only for what the first could not
 obtain.</p>
@@ -128,8 +130,10 @@ obtain.</p>
 <ul>
   <li><strong>It honours your <code>robots.txt</code></strong>, including where doing so costs it
   documents it wants.</li>
-  <li><strong>It asks for specific things</strong>: an issuer's list of filings, and the documents
-  that list names. It does not follow links to see what a site holds.</li>
+  <li><strong>It asks for specific things</strong>: an issuer's list of filings or ratings, found
+  through the site's own search, and the documents that list names. To learn how a site lists them it
+  may fetch the site's front page and scripts once. It does not follow links to see what a site
+  holds.</li>
   <li><strong>It is slow on purpose</strong>: at most one request every two seconds to any host.</li>
   <li><strong>It never creates an account, registers, accepts terms, asserts a membership, or pays
   for anything</strong> — in anyone's name, including the operator's. A source behind a login or a
@@ -157,7 +161,7 @@ this program therefore claimed to be at the time it made a request — is readab
 href="https://github.com/RaketaAi/india-v2-bot">github.com/RaketaAi/india-v2-bot</a>
 rather than being whatever it says today.</p>
 
-<footer>Last updated 23 September 2026.</footer>
+<footer>Last updated 24 September 2026.</footer>
 
 </main>
 </body>
