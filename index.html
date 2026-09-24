@@ -103,7 +103,8 @@ any client that does not present as a web browser: measured on 23 September 2026
 name on every request and NSE left every connection unanswered. To those two alone the program sends
 the headers of a Chrome browser, with the <code>Referer</code> of the exchange's own site, and to
 BSE also the <code>Origin</code> of BSE's own site. Nothing else is added. It asks them
-only for filings the Listing Regulations make public, it honours their <code>robots.txt</code>, and
+only for filings the Listing Regulations make public, it honours their <code>robots.txt</code> —
+including a rule that names <code>india-v2-bot</code>, though it does not send that name there — and
 every such request is recorded against this exception. If either exchange would rather admit the
 program under its own name, write to the address below and it will switch.</p>
 
@@ -129,7 +130,10 @@ obtain.</p>
 <h2>How it behaves</h2>
 <ul>
   <li><strong>It honours your <code>robots.txt</code></strong>, including where doing so costs it
-  documents it wants.</li>
+  documents it wants. It follows <a href="https://www.rfc-editor.org/rfc/rfc9309">RFC 9309</a>: a
+  rule naming <code>india-v2-bot</code> is obeyed wherever it is written, and where no rule names it,
+  the rules for every robot apply. If your <code>robots.txt</code> is missing or refused, nothing is
+  disallowed; if it does not answer, the program asks for nothing on your site until it does.</li>
   <li><strong>It asks for specific things</strong>: an issuer's list of filings or ratings, found
   through the site's own search, and the documents that list names. To learn how a site lists them it
   may fetch the site's front page and scripts once. It does not follow links to see what a site
